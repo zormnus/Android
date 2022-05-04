@@ -20,7 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 import ru.mirea.zotovml.mireaproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var web_View:WebView
@@ -47,10 +46,10 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_browser,
-                R.id.nav_calculate
+                R.id.nav_calculate, R.id.nav_settings, R.id.nav_stories, R.id.nav_content
             ), drawerLayout
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(this, navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 

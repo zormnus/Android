@@ -43,4 +43,19 @@
         android:name="ru.mirea.zotovml.mireaproject.MusicFragment"
         android:label="fragment_music"
         tools:layout="@layout/fragment_music" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="ru.mirea.zotovml.mireaproject.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/nav_stories"
+        android:name="ru.mirea.zotovml.mireaproject.Stories"
+        android:label="fragment_stories"
+        tools:layout="@layout/fragment_stories" />
+    <fragment
+        android:id="@+id/nav_content"
+        android:name="ru.mirea.zotovml.mireaproject.ContentFragment"
+        android:label="fragment_content"
+        tools:layout="@layout/fragment_content" />
 </navigation>

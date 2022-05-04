@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_gravity="bottom|center|left"
+        android:clickable="true"
+        android:onClick="onSave"
+        tools:src="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/editSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|left"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Surname" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top|left"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+</FrameLayout>

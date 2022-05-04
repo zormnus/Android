@@ -13,7 +13,7 @@ class YeService : Service() {
     }
 
     override fun onCreate() {
-        mediaPlayer = MediaPlayer.create(this,R.raw.oplot)
+        mediaPlayer = MediaPlayer.create(this,R.raw.bound2)
         mediaPlayer.isLooping = true
     }
 
