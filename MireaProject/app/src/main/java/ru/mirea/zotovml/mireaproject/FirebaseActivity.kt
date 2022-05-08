@@ -78,9 +78,35 @@ class FirebaseActivity: AppCompatActivity(){
                 }
             }
     }
+    private fun createAccount(email:String, password:String) {
+        Log.d(TAG, "CreateAccount $email")
+        if (!validateForm()) {
+            return
+        }
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(
+                this
+            ) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = mAuth.currentUser
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        this, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
 
     fun onAuthClick(view: View) {
         signIn(emailText.text.toString(), passwordText.text.toString())
     }
 
+    fun createAccBtnClick(view: View) {
+        createAccount(emailText.text.toString(), passwordText.text.toString())
+    }
 }
