@@ -41,5 +41,9 @@
             android:id="@+id/nav_content"
             android:title="Internet Content"
             android:icon="@drawable/googleg_standard_color_18"/>
+        <item
+            android:id="@+id/carServiceFragment"
+            android:title="Car Service"
+            android:icon="?android:attr/actionModeFindDrawable"/>
     </group>
 </menu>

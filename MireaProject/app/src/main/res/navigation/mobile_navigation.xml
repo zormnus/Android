@@ -58,4 +58,9 @@
         android:name="ru.mirea.zotovml.mireaproject.ContentFragment"
         android:label="fragment_content"
         tools:layout="@layout/fragment_content" />
+    <fragment
+        android:id="@+id/carServiceFragment"
+        android:name="ru.mirea.zotovml.mireaproject.CarServiceFragment"
+        android:label="fragment_car_service"
+        tools:layout="@layout/fragment_car_service" />
 </navigation>
