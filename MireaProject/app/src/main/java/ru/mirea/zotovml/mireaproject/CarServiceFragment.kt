@@ -53,7 +53,7 @@ class CarServiceFragment : Fragment() {
         }
     }
     private val createListener = View.OnClickListener {
-        val newPerson = PersonDBEntity(1,email.text.toString(), password.text.toString()
+        val newPerson = PersonDBEntity(0,email.text.toString(), password.text.toString()
             ,spinnerBrands.selectedItem.toString(), spinnerTypes.selectedItem.toString()
             , regNumber.text.toString())
         personDao?.insert(newPerson)
