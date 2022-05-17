@@ -45,5 +45,10 @@
             android:id="@+id/carServiceFragment"
             android:title="Car Service"
             android:icon="?android:attr/actionModeFindDrawable"/>
+
+        <item
+            android:id="@+id/mapsFragment"
+            android:title="Maps"
+            android:icon="@android:drawable/ic_dialog_map"/>
     </group>
 </menu>

@@ -63,4 +63,9 @@
         android:name="ru.mirea.zotovml.mireaproject.CarServiceFragment"
         android:label="fragment_car_service"
         tools:layout="@layout/fragment_car_service" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="ru.mirea.zotovml.mireaproject.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

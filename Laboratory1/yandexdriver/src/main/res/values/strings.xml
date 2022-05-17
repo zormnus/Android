@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">YandexDriver</string>
+    <string name="remote_error_message">1</string>
+    <string name="unknown_error_message">2</string>
+    <string name="network_error_message">3</string>
+</resources>
