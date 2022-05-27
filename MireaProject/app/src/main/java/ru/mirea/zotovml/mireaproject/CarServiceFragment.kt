@@ -1,6 +1,11 @@
 package ru.mirea.zotovml.mireaproject
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +13,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
+import org.w3c.dom.Text
 import ru.mirea.zotovml.mireaproject.roomFiles.App
 import ru.mirea.zotovml.mireaproject.roomFiles.PersonDBEntity
 
@@ -24,6 +31,10 @@ private const val ARG_PARAM2 = "param2"
  */
 class CarServiceFragment : Fragment() {
     // TODO: Rename and change types of parameters
+
+    private lateinit var sensorManager: SensorManager
+    private lateinit var sensor:Sensor
+
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var email:EditText
@@ -133,4 +144,5 @@ class CarServiceFragment : Fragment() {
                 }
             }
     }
+
 }

@@ -1,7 +1,8 @@
 package ru.mirea.zotovml.mireaproject
 
-import android.R.attr.path
-import android.content.Context
+import android.annotation.SuppressLint
+import android.net.wifi.WifiConfiguration
+import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +10,18 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.MalformedURLException
 import java.net.URL
-import javax.net.ssl.HttpsURLConnection
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +40,8 @@ class ContentFragment : Fragment() {
     private var param2: String? = null
     private lateinit var webView: WebView
     private lateinit var btn:Button
-    private lateinit var urlText:EditText
+    private lateinit var cityName:EditText
+    private lateinit var resultText:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,65 +53,85 @@ class ContentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        webView = view.findViewById(R.id.webView)
         btn = view.findViewById(R.id.downloadBtn)
-        urlText = view.findViewById(R.id.urlText)
+        cityName = view.findViewById(R.id.urlText)
+        resultText = view.findViewById(R.id.textView12)
         btn.setOnClickListener {
-            Thread {
+            if(cityName.text.toString().trim().equals(""))
+                Toast.makeText(this.requireContext(), "Вы не ввели название города"
+                    , Toast.LENGTH_LONG).show();
+            else {
+                val apiKey = "52a8fc856433f02db616f27aefcba0ed"
+                val city = cityName.text
+                val url =
+                    "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric&lang=en"
+                RemoteFetch().execute(url)
+            }
+        }
+
+    }
+
+    private inner class RemoteFetch : AsyncTask<String, String, String>() {
+
+        override fun onPreExecute() {
+            super.onPreExecute()
+            resultText.text = "Загружаю..."
+        }
+
+        override fun doInBackground(vararg strings: String?): String? {
+            var connection: HttpURLConnection? = null
+            var reader: BufferedReader? = null
+
+            try {
+                val url = URL(strings[0])
+                connection = url.openConnection() as HttpURLConnection
+                connection.connect()
+
+
+                val stream: InputStream = connection.inputStream
+                reader = BufferedReader(InputStreamReader(stream))
+
+
+                val buffer = StringBuilder()
+                var line: String? = ""
+
+
+                while (reader.readLine().also { line = it } != null) buffer.append(line)
+                    .append("\n")
+
+
+                return buffer.toString()
+            } catch (e: MalformedURLException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            } finally {
+                // Закрываем соединения
+                connection?.disconnect()
                 try {
-                    val content: String = getContent(urlText.text.toString()).toString()
-                    webView.post {
-                        webView.loadDataWithBaseURL(
-                            urlText.text.toString(),
-                            content,
-                            "text/html",
-                            "UTF-8",
-                            urlText.text.toString()
-                        )
-                        Toast.makeText(
-                            this.context, "Данные загружены", Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } catch (ex: IOException) {
-                    ex.printStackTrace()
+                    reader?.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
                 }
-            }.start()
+            }
+
+            return null
+        }
+
+        @SuppressLint("SetTextI18n")
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            try {
+                val jsonObject = JSONObject(result)
+                resultText.text = "Температура: " + jsonObject.getJSONObject("main")
+                    .getDouble("temp")
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
         }
     }
 
-    private fun getContent(path:String) : String? {
-        var reader: BufferedReader? = null
-        var stream: InputStream? = null
-        var connection: HttpsURLConnection? = null
-        try {
-            val url = URL(path)
-            connection = url.openConnection() as HttpsURLConnection
-            connection.requestMethod = "GET"
-            connection.readTimeout = 100000
-            connection.connectTimeout = 100000
-            connection.instanceFollowRedirects = true
-            connection.useCaches = false
-            connection.doInput = true
-            val responseCode = connection.responseCode
-            return if (responseCode == HttpsURLConnection.HTTP_OK) {
-                connection.connect()
-                stream = connection.inputStream
-                reader = BufferedReader(InputStreamReader(stream))
-                val buf = StringBuilder()
-                var line: String?
-                while (reader.readLine().also { line = it } != null) {
-                    buf.append(line).append("\n")
-                }
-                buf.toString()
-            } else {
-                "$responseCode Error"
-            }
-        } finally {
-            reader?.close()
-            stream?.close()
-            connection?.disconnect()
-        }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

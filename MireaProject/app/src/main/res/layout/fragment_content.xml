@@ -6,15 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ContentFragment">
 
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="match_parent"
-        android:layout_height="344dp"
-        app:layout_constraintBottom_toTopOf="@id/scrollView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/downloadBtn" />
-
     <Button
         android:id="@+id/downloadBtn"
         android:layout_width="156dp"
@@ -33,6 +24,12 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:rotationY="3"
-        android:text="URL" />
+        android:text="Enter City" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
 </FrameLayout>

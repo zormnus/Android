@@ -24,12 +24,21 @@
         android:layout_gravity="center|end"
         android:text="Stop Bound" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+
+    <Button
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:visibility="visible"
-        tools:src="@drawable/m4ysso_kv44" />
+        android:layout_marginTop="150dp"
+        android:layout_gravity="right"
+        android:text="Stop Record" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="left"
+        android:text="Start Record" />
 
 </FrameLayout>

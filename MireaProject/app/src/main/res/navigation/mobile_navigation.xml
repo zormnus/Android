@@ -68,4 +68,10 @@
         android:name="ru.mirea.zotovml.mireaproject.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/functional"
+        android:name="ru.mirea.zotovml.mireaproject.Functional"
+        android:label="fragment_functional"
+        tools:layout="@layout/fragment_functional" />
+
 </navigation>

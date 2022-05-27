@@ -28,7 +28,8 @@
         android:ems="10"
         android:hint="@string/action_settings"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:text="Number 1" />
 
     <EditText
         android:id="@+id/number2Field"
@@ -38,7 +39,8 @@
         android:ems="10"
         android:hint="@string/action_settings"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:text="Number 2" />
 
     <EditText
         android:id="@+id/operationField"
@@ -49,6 +51,7 @@
         android:gravity="center|right"
         android:hint="@string/action_settings"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:text="Op" />
 
 </FrameLayout>

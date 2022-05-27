@@ -50,5 +50,11 @@
             android:id="@+id/mapsFragment"
             android:title="Maps"
             android:icon="@android:drawable/ic_dialog_map"/>
+
+        <item
+            android:id="@+id/functional"
+            android:title="Functional"
+            android:icon="@android:drawable/ic_menu_edit"/>
+
     </group>
 </menu>

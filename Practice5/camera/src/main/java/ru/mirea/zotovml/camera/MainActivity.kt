@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
     private val TAG:String = MainActivity::class.java.simpleName
     private lateinit var imageView: ImageView
-    private var isWork = true
+    private var isWork = false
     private lateinit var imageUri:Uri
 
 
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
                 , REQUEST_CODE_PERMISSION_CAMERA)
         }
     }

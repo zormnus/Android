@@ -56,11 +56,11 @@ class CalculateFragment : Fragment() {
     }
 
     private fun calculate(view: View): Double {
-        val num1: Int = view.findViewById<EditText>(R.id.number1Field).text.toString().toInt()
+        val num1 = view.findViewById<EditText>(R.id.number1Field).text.toString().toDouble()
         val operation:String? = view.findViewById<EditText>(R.id.operationField).text.toString()
-        val num2: Int = view.findViewById<EditText>(R.id.number2Field).text.toString().toInt()
+        val num2 = view.findViewById<EditText>(R.id.number2Field).text.toString().toDouble()
 
-        if (num2 == 0 && operation == "/") {
+        if (num2 == 0.0 && operation == "/") {
             val toast = Toast.makeText(view.context, "На 0 делить нельзя!", Toast.LENGTH_SHORT)
             toast.show()
             throw Exception("На 0 делить нельзя!")
